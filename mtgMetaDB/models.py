@@ -12,8 +12,7 @@ player_table = Table(
 league_table = Table(
     "league",
     mapper_registry.metadata,
-    Column("idleague", Integer, primary_key=True),
-    Column("name", Text, nullable=False),
+    Column("idleague", String(64), primary_key=True, nullable=False),
     Column("date_created", Date, nullable=False),
     Column("notes", Text)
 )
@@ -34,7 +33,7 @@ game_table = Table(
     Column("idgame", Integer, primary_key=True),
     Column("date", Date),
     Column("format", Text),
-    Column("league", Integer, ForeignKey("league.idleague")),
+    Column("league", String(64), ForeignKey("league.idleague")),
     Column("notes", Text)
 )
 
